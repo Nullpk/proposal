@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Partnership | Naqash Afzal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+        
+        :root {
+            --bg-deep: #050505;
+            --bg-card: #0F0F0F;
+            --accent-gold: #D4AF37;
+            --text-main: #E5E5E5;
+            --text-dim: #737373;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Playfair Display', serif; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin: auto;
+            height: 320px;
+        }
+
+        .logo-box {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #080808;
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo-box:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
+        }
+
+        .logo-img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+        }
+
+        .active-tab {
+            background: var(--accent-gold);
+            color: #000;
+            font-weight: 900;
+        }
+
+        .step-pill {
+            background: linear-gradient(90deg, #D4AF37 0%, #F1D279 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-hire {
+            background: #D4AF37;
+            color: #000;
+            font-weight: 900;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-hire:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeIn 0.6s ease forwards; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#D4AF37] flex items-center justify-center rounded-lg shadow-lg">
+                    <span class="text-black font-black text-lg">NA</span>
+                </div>
+                <span class="text-[11px] font-black tracking-[0.4em] uppercase">Partnership Proposal</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-[10px] font-black uppercase tracking-widest text-dim">
+                <a href="#strategy" class="hover:text-[#D4AF37] transition">The Strategy</a>
+                <a href="#roadmap" class="hover:text-[#D4AF37] transition">30-Day Sprint</a>
+                <a href="#performance" class="hover:text-[#D4AF37] transition">Performance</a>
+            </div>
+            <a href="mailto:hello@naqashafzal.com" class="btn-hire px-8 py-3 text-[11px] uppercase tracking-[0.2em] rounded-full">Hire Me Now</a>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-32 px-6 text-center">
+        <div class="max-w-5xl mx-auto">
+            <span class="step-pill text-[12px] font-black uppercase tracking-[0.6em] mb-8 block">Exclusive Growth Blueprint</span>
+            <h1 class="serif text-6xl md:text-9xl text-white mb-10 leading-[0.9]">Elevate Your <br><span class="text-[#D4AF37]">Dominance.</span></h1>
+            <p class="text-dim text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
+                A precision-engineered 30-day expansion plan for <strong>Builditpdx</strong> and <strong>The Bay Area Developers</strong> designed for authority and high-intent lead generation.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                 <a href="#strategy" class="px-10 py-5 border border-white/20 rounded-full text-[12px] font-black uppercase tracking-widest hover:bg-white/5 transition">Explore the Plan</a>
+                 <a href="mailto:hello@naqashafzal.com" class="btn-hire px-10 py-5 rounded-full text-[12px] uppercase tracking-widest">Hire Me Now</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-24 space-y-48">
+
+        <!-- Section 1: Dynamic Strategic Analysis -->
+        <section id="strategy">
+            <div class="mb-20 text-center md:text-left">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 serif italic">01. Tailored Strategy</h2>
+                <p class="text-dim text-xl max-w-2xl">A dual-market approach recognizing that Portland craftsmanship and SF development require distinct psychological triggers.</p>
+            </div>
+
+            <div class="flex justify-center mb-16">
+                <div class="p-1.5 bg-neutral-900/50 backdrop-blur rounded-2xl flex border border-white/5">
+                    <button onclick="updateView('pdx')" id="btn-pdx" class="px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition active-tab">Builditpdx (Portland)</button>
+                    <button onclick="updateView('bay')" id="btn-bay" class="px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition text-dim hover:text-white">Bay Area Developers (SF)</button>
+                </div>
+            </div>
+
+            <div id="company-focus" class="grid lg:grid-cols-2 gap-12 items-start fade-in min-h-[500px]">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Section 2: 30-Day Sprint Roadmap -->
+        <section id="roadmap">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 serif italic">02. The 30-Day Sprint</h2>
+                <p class="text-dim text-xl max-w-2xl mx-auto">From setup to scale. Four weeks of relentless execution to secure your first 1,000+ targeted likes and authority signals.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Week 1 -->
+                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
+                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 01</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Infrastructure</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Setting the technical foundation for conversion and algorithm tracking.</p>
+                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
+                        <li>• Meta Pixel & API Setup</li>
+                        <li>• GMB & SEO Technical Audit</li>
+                        <li>• Launch 1K Likes Campaign</li>
+                        <li>• Audience Persona Mapping</li>
+                    </ul>
+                </div>
+                <!-- Week 2 -->
+                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
+                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 02</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Authority</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Deploying high-quality content that proves your craft is superior.</p>
+                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
+                        <li>• 1st Batch of 4K Cinematic Reels</li>
+                        <li>• High-Value Blog Release</li>
+                        <li>• Daily Expert Story Series</li>
+                        <li>• Active Reach Management</li>
+                    </ul>
+                </div>
+                <!-- Week 3 -->
+                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
+                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 03</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Lead Capture</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Activating direct response channels to turn followers into projects.</p>
+                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
+                        <li>• Google LSA Activation</li>
+                        <li>• Hit 1,000 Verified Likes</li>
+                        <li>• Lead Magnet Deployment</li>
+                        <li>• Portfolio Showcase Launch</li>
+                    </ul>
+                </div>
+                <!-- Week 4 -->
+                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
+                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 04</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Optimization</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Analyzing data to prepare for aggressive month-two scaling.</p>
+                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
+                        <li>• Full Performance Report</li>
+                        <li>• Lead Quality Calibration</li>
+                        <li>• SEO Backlink Outreach</li>
+                        <li>• Scaled Media Plan</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Technical & Ad Performance -->
+        <section id="performance">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 serif italic">03. Technical Core</h2>
+                    <p class="text-dim text-lg mb-12 leading-relaxed">I build conversion engines, not just social pages. My strategy ensures your website and socials work in perfect harmony to drive HNW (High-Net-Worth) leads.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-8 bg-neutral-900/40 rounded-3xl border border-white/5 flex items-start gap-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex-shrink-0 flex items-center justify-center text-[#D4AF37] text-2xl">⚡</div>
+                            <div>
+                                <h5 class="text-xl font-bold text-white mb-2">Performance SEO</h5>
+                                <p class="text-sm text-dim leading-relaxed">Optimizing for "Luxury Home Builder" and "ADU Specialist" keywords to capture intent at the search level.</p>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-neutral-900/40 rounded-3xl border border-white/5 flex items-start gap-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex-shrink-0 flex items-center justify-center text-[#D4AF37] text-2xl">📱</div>
+                            <div>
+                                <h5 class="text-xl font-bold text-white mb-2">Content Frequency</h5>
+                                <p class="text-sm text-dim leading-relaxed">3 Posts, 2 Reels, and Daily Stories per company per week. A total dominance strategy for the feed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-neutral-900/20 border border-white/5 p-12 rounded-[4rem]">
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-[#D4AF37] text-center mb-12">Recommended Ad Allocation</h4>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <p class="mt-12 text-center text-[10px] text-dim uppercase tracking-[0.2em]">Growth vs. Conversion Balance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Pitch -->
+        <section class="text-center py-20 px-8 relative overflow-hidden">
+             <div class="relative z-10">
+                <h2 class="text-5xl md:text-8xl font-black mb-8 serif italic leading-tight">Zero Friction. <br>Just Results.</h2>
+                <p class="max-w-3xl mx-auto text-xl md:text-2xl font-light leading-relaxed mb-16 text-white/80 italic">
+                    "I don’t offer services; I offer a competitive advantage. For Builditpdx and Bay Area Developers, I will bridge the gap between craftsmanship and market leadership."
+                </p>
+                <div class="flex flex-col items-center gap-8">
+                    <a href="mailto:hello@naqashafzal.com" class="btn-hire px-16 py-6 rounded-full text-lg uppercase tracking-widest shadow-2xl">Hire Me Now</a>
+                    <p class="text-dim text-[10px] font-black uppercase tracking-[0.5em]">Starting 30-Day Transformation Immediately</p>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="py-24 px-6 border-t border-white/5 text-center">
+        <div class="flex items-center justify-center gap-3 mb-10">
+            <div class="w-8 h-8 bg-[#D4AF37] flex items-center justify-center rounded">
+                <span class="text-black font-black text-xs">NA</span>
+            </div>
+            <span class="text-[10px] font-black tracking-[0.4em] uppercase">Growth Partner</span>
+        </div>
+        <p class="text-[10px] font-bold text-dim tracking-[0.5em] uppercase">© 2024 Naqash Afzal | Exclusive Proposal for Builditpdx & The Bay Area Developers</p>
+    </footer>
+
+    <script>
+        const views = {
+            pdx: {
+                logo: "https://builditpdx.com/wp-content/themes/pconst/images/logo.png",
+                audience: "Portland homeowners seeking ADU conversions, high-end kitchen remodels, and reliable local craftsmanship. Focus on trust and PNW aesthetics.",
+                branding: "The 'Neighborhood Craftsman.' Authoritative, expert, but accessible. Strong focus on Multnomah and Clackamas county reach.",
+                website: "Priority: Mobile optimization and localized service landing pages for ADUs to lower lead-acquisition costs.",
+                additional: "Localized NextDoor verification and aggressive Facebook Community engagement in target zip codes."
+            },
+            bay: {
+                logo: "https://thebayareadevelopers.com/wp-content/uploads/2024/01/baylogo-gold.png",
+                audience: "High-Net-Worth individuals and Real Estate Investors in the SF/Oakland Peninsula. Looking for elite ground-up development and permitting speed.",
+                branding: "The 'Architectural Authority.' Professional, high-scale, and capable of navigating the complex regulatory landscape of San Francisco.",
+                website: "Priority: Case-study driven UX. Highlighting 'Ground-Up' expertise and permit acquisition success stories.",
+                additional: "LinkedIn outreach for B2B architectural partnerships and geo-fenced ads targeting high-property-value zones."
+            }
+        };
+
+        function updateView(key) {
+            const data = views[key];
+            const container = document.getElementById('company-focus');
+            
+            document.getElementById('btn-pdx').classList.toggle('active-tab', key === 'pdx');
+            document.getElementById('btn-bay').classList.toggle('active-tab', key === 'bay');
+            document.getElementById('btn-pdx').classList.toggle('text-dim', key !== 'pdx');
+            document.getElementById('btn-bay').classList.toggle('text-dim', key !== 'bay');
+
+            container.style.opacity = 0;
+            
+            setTimeout(() => {
+                container.innerHTML = `
+                    <div class="logo-box">
+                        <img src="${data.logo}" class="logo-img" alt="Logo">
+                    </div>
+                    <div class="space-y-8">
+                        <div class="glass-panel p-10 rounded-[3rem]">
+                            <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-6">Market Identification</h4>
+                            <p class="text-white text-xl font-light leading-relaxed">${data.audience}</p>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-neutral-900/50 p-8 rounded-3xl border border-white/5">
+                                <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-3">Website Fixes</h4>
+                                <p class="text-sm text-dim leading-relaxed">${data.website}</p>
+                            </div>
+                            <div class="bg-neutral-900/50 p-8 rounded-3xl border border-white/5">
+                                <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-3">Brand Voice</h4>
+                                <p class="text-sm text-dim leading-relaxed">${data.branding}</p>
+                            </div>
+                        </div>
+                        <div class="p-8 bg-[#D4AF37]/5 rounded-3xl border border-[#D4AF37]/20">
+                            <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-2">Growth Strategy</h4>
+                            <p class="text-sm text-white/80">${data.additional}</p>
+                        </div>
+                    </div>
+                `;
+                container.style.opacity = 1;
+            }, 300);
+        }
+
+        function initChart() {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Social Growth (1K Likes Focus)', 'Conversion (Google LSA/PPC)', 'Authority Content Production'],
+                    datasets: [{
+                        data: [40, 40, 20],
+                        backgroundColor: ['#D4AF37', '#222', '#000'],
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 2,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '85%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { 
+                                color: '#737373', 
+                                padding: 25, 
+                                font: { family: 'Outfit', size: 10, weight: 'bold' },
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.onload = () => {
+            updateView('pdx');
+            initChart();
+        };
+    </script>
+</body>
+</html>
