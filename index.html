@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growth Partnership | Naqash Afzal</title>
+    <title>AI Content Studio | Hands-Free YouTube Growth</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;900&display=swap');
         
         :root {
-            --bg-deep: #050505;
-            --bg-card: #0F0F0F;
-            --accent-gold: #D4AF37;
-            --text-main: #E5E5E5;
-            --text-dim: #737373;
+            --bg-deep: #030305;
+            --bg-card: #0A0A10;
+            --accent-primary: #8B5CF6; /* Purple */
+            --accent-secondary: #06B6D4; /* Cyan */
+            --text-main: #F3F4F6;
+            --text-dim: #9CA3AF;
         }
 
         body {
@@ -23,13 +24,12 @@
             color: var(--text-main);
             scroll-behavior: smooth;
             overflow-x: hidden;
+            background-image: radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 50%);
         }
 
-        .serif { font-family: 'Playfair Display', serif; }
-
         .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
@@ -41,54 +41,62 @@
             height: 320px;
         }
 
-        .logo-box {
-            height: 140px;
+        .feature-icon-box {
+            height: 120px;
+            width: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #080808;
-            padding: 30px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
             border-radius: 24px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 3rem;
         }
 
-        .logo-box:hover {
-            border-color: var(--accent-gold);
+        .feature-icon-box:hover {
+            border-color: var(--accent-primary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
-        }
-
-        .logo-img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.3);
         }
 
         .active-tab {
-            background: var(--accent-gold);
-            color: #000;
-            font-weight: 900;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            font-weight: 700;
         }
 
-        .step-pill {
-            background: linear-gradient(90deg, #D4AF37 0%, #F1D279 100%);
+        .text-gradient {
+            background: linear-gradient(90deg, #8B5CF6 0%, #06B6D4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .btn-hire {
-            background: #D4AF37;
-            color: #000;
-            font-weight: 900;
+        .btn-primary {
+            background: linear-gradient(90deg, #8B5CF6, #06B6D4);
+            color: #fff;
+            font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            border: none;
         }
 
-        .btn-hire:hover {
+        .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
         }
 
         @keyframes fadeIn {
@@ -97,266 +105,362 @@
         }
 
         .fade-in { animation: fadeIn 0.6s ease forwards; }
+        
+        .step-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.03);
+        }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-lg border-b border-white/5">
+    <nav class="fixed w-full z-50 bg-[#030305]/80 backdrop-blur-lg border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-[#D4AF37] flex items-center justify-center rounded-lg shadow-lg">
-                    <span class="text-black font-black text-lg">NA</span>
+                <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center rounded-lg shadow-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
-                <span class="text-[11px] font-black tracking-[0.4em] uppercase">Partnership Proposal</span>
+                <span class="text-sm font-black tracking-[0.2em] uppercase">AI Content Studio</span>
             </div>
-            <div class="hidden md:flex gap-10 text-[10px] font-black uppercase tracking-widest text-dim">
-                <a href="#strategy" class="hover:text-[#D4AF37] transition">The Strategy</a>
-                <a href="#roadmap" class="hover:text-[#D4AF37] transition">30-Day Sprint</a>
-                <a href="#performance" class="hover:text-[#D4AF37] transition">Performance</a>
+            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-dim">
+                <a href="#features" class="hover:text-white transition">Features</a>
+                <a href="#how-it-works" class="hover:text-white transition">How it Works</a>
+                <a href="#stats" class="hover:text-white transition">Stats</a>
             </div>
-            <a href="https://upwork.com/freelancers/naqashafzalzakria" target="_blank" class="btn-hire px-8 py-3 text-[11px] uppercase tracking-[0.2em] rounded-full">Hire Me Now</a>
+            <a href="https://github.com/naqashafzal/AI-Content-Studio" target="_blank" class="btn-primary px-6 py-2.5 text-[11px] uppercase tracking-[0.1em] rounded-full flex items-center gap-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                Star on GitHub
+            </a>
         </div>
     </nav>
 
     <header class="pt-48 pb-32 px-6 text-center">
-        <div class="max-w-5xl mx-auto">
-            <span class="step-pill text-[12px] font-black uppercase tracking-[0.6em] mb-8 block">Exclusive Growth Blueprint</span>
-            <h1 class="serif text-6xl md:text-9xl text-white mb-10 leading-[0.9]">Elevate Your <br><span class="text-[#D4AF37]">Dominance.</span></h1>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <span class="text-gradient text-[12px] font-black uppercase tracking-[0.4em] mb-8 block">Open Source Automation</span>
+            <h1 class="text-6xl md:text-8xl text-white mb-10 leading-[1.1] font-black">
+                Hands-Free <br>
+                <span class="text-gradient">YouTube Growth.</span>
+            </h1>
             <p class="text-dim text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto mb-16 font-light">
-                A precision-engineered 30-day expansion plan for <strong>Builditpdx</strong> and <strong>The Bay Area Developers</strong> designed for authority and high-intent lead generation.
+                A 100% free & open-source AI Content Automation Tool that writes scripts, generates voiceovers, creates videos, and uploads them automatically.
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
-                 <a href="#strategy" class="px-10 py-5 border border-white/20 rounded-full text-[12px] font-black uppercase tracking-widest hover:bg-white/5 transition">Explore the Plan</a>
-                 <a href="https://upwork.com/freelancers/naqashafzalzakria" target="_blank" class="btn-hire px-10 py-5 rounded-full text-[12px] uppercase tracking-widest">Hire Me Now</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                 <a href="https://github.com/naqashafzal/AI-Content-Studio" target="_blank" class="btn-primary px-10 py-4 rounded-full text-sm uppercase tracking-widest">Clone Repository</a>
+                 <a href="#how-it-works" class="btn-secondary px-10 py-4 rounded-full text-sm uppercase tracking-widest">See How It Works</a>
             </div>
         </div>
+        <!-- Abstract background elements -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] -z-10"></div>
+        <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-[100px] -z-10"></div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-24 space-y-48">
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-48">
 
-        <!-- Section 1: Dynamic Strategic Analysis -->
-        <section id="strategy">
+        <!-- Features Interactive Section -->
+        <section id="features">
             <div class="mb-20 text-center md:text-left">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 serif italic">01. Tailored Strategy</h2>
-                <p class="text-dim text-xl max-w-2xl">A dual-market approach recognizing that Portland craftsmanship and SF development require distinct psychological triggers.</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">01. The Complete AI Pipeline</h2>
+                <p class="text-dim text-xl max-w-2xl">Replaces multiple expensive SaaS tools with one open-source workflow. Click to explore each stage of generation.</p>
             </div>
 
-            <div class="flex justify-center mb-16">
-                <div class="p-1.5 bg-neutral-900/50 backdrop-blur rounded-2xl flex border border-white/5">
-                    <button onclick="updateView('pdx')" id="btn-pdx" class="px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition active-tab">Builditpdx (Portland)</button>
-                    <button onclick="updateView('bay')" id="btn-bay" class="px-10 py-4 rounded-xl text-[11px] font-black uppercase tracking-[0.2em] transition text-dim hover:text-white">Bay Area Developers (SF)</button>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-16">
+                <div class="p-1.5 bg-white/5 backdrop-blur rounded-2xl flex flex-wrap border border-white/10 gap-1 w-full md:w-auto">
+                    <button onclick="updateView('script')" id="btn-script" class="flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition active-tab">Script AI</button>
+                    <button onclick="updateView('voice')" id="btn-voice" class="flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition text-dim hover:text-white">Voiceovers</button>
+                    <button onclick="updateView('video')" id="btn-video" class="flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition text-dim hover:text-white">Video Render</button>
+                    <button onclick="updateView('upload')" id="btn-upload" class="flex-1 md:flex-none px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition text-dim hover:text-white">Auto Upload</button>
                 </div>
             </div>
 
-            <div id="company-focus" class="grid lg:grid-cols-2 gap-12 items-start fade-in min-h-[500px]">
+            <div id="feature-focus" class="grid lg:grid-cols-2 gap-16 items-center fade-in min-h-[400px]">
                 <!-- Injected via JS -->
             </div>
         </section>
 
-        <!-- Section 2: 30-Day Sprint Roadmap -->
-        <section id="roadmap">
+        <!-- How It Works Section -->
+        <section id="how-it-works">
             <div class="mb-20 text-center">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6 serif italic">02. The 30-Day Sprint</h2>
-                <p class="text-dim text-xl max-w-2xl mx-auto">From setup to scale. Four weeks of relentless execution to secure your first 1,000+ targeted likes and authority signals.</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">02. How It Works</h2>
+                <p class="text-dim text-xl max-w-2xl mx-auto">From setup to published video in minutes. A fully automated pipeline that runs on your local machine.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Week 1 -->
-                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
-                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 01</span>
-                    <h4 class="text-white text-2xl font-bold mb-4">Infrastructure</h4>
-                    <p class="text-dim text-sm leading-relaxed mb-6">Setting the technical foundation for conversion and algorithm tracking.</p>
-                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
-                        <li>• Meta Pixel & API Setup</li>
-                        <li>• GMB & SEO Technical Audit</li>
-                        <li>• Launch 1K Likes Campaign</li>
-                        <li>• Audience Persona Mapping</li>
+                <!-- Step 1 -->
+                <div class="p-10 step-card rounded-3xl group">
+                    <span class="text-gradient font-black text-[10px] uppercase tracking-[0.3em] mb-6 block">PHASE 01</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Configuration</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Set up your API keys and authenticate with YouTube once.</p>
+                    <ul class="text-[12px] text-white/70 space-y-3 font-medium">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Clone repository</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Add LLM API Keys</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> YouTube OAuth Login</li>
                     </ul>
                 </div>
-                <!-- Week 2 -->
-                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
-                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 02</span>
-                    <h4 class="text-white text-2xl font-bold mb-4">Authority</h4>
-                    <p class="text-dim text-sm leading-relaxed mb-6">Deploying high-quality content that proves your craft is superior.</p>
-                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
-                        <li>• 1st Batch of 4K Cinematic Reels</li>
-                        <li>• High-Value Blog Release</li>
-                        <li>• Daily Expert Story Series</li>
-                        <li>• Active Reach Management</li>
+                <!-- Step 2 -->
+                <div class="p-10 step-card rounded-3xl group">
+                    <span class="text-gradient font-black text-[10px] uppercase tracking-[0.3em] mb-6 block">PHASE 02</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Prompt Generation</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Input a simple topic or let the AI find trending niches automatically.</p>
+                    <ul class="text-[12px] text-white/70 space-y-3 font-medium">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Topic Selection</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Viral Hook Creation</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Full Script Writing</li>
                     </ul>
                 </div>
-                <!-- Week 3 -->
-                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
-                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 03</span>
-                    <h4 class="text-white text-2xl font-bold mb-4">Lead Capture</h4>
-                    <p class="text-dim text-sm leading-relaxed mb-6">Activating direct response channels to turn followers into projects.</p>
-                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
-                        <li>• Google LSA Activation</li>
-                        <li>• Hit 1,000 Verified Likes</li>
-                        <li>• Lead Magnet Deployment</li>
-                        <li>• Portfolio Showcase Launch</li>
+                <!-- Step 3 -->
+                <div class="p-10 step-card rounded-3xl group">
+                    <span class="text-gradient font-black text-[10px] uppercase tracking-[0.3em] mb-6 block">PHASE 03</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Rendering</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">The system fetches assets, generates TTS, and renders the final MP4.</p>
+                    <ul class="text-[12px] text-white/70 space-y-3 font-medium">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Text-to-Speech</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> B-Roll Sourcing</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Captions & Editing</li>
                     </ul>
                 </div>
-                <!-- Week 4 -->
-                <div class="p-10 bg-neutral-900/40 border border-white/5 rounded-[2.5rem] hover:border-[#D4AF37]/40 transition group">
-                    <span class="text-[#D4AF37] font-black text-[10px] uppercase tracking-[0.4em] mb-6 block">PHASE 04</span>
-                    <h4 class="text-white text-2xl font-bold mb-4">Optimization</h4>
-                    <p class="text-dim text-sm leading-relaxed mb-6">Analyzing data to prepare for aggressive month-two scaling.</p>
-                    <ul class="text-[12px] text-white/80 space-y-3 font-medium">
-                        <li>• Full Performance Report</li>
-                        <li>• Lead Quality Calibration</li>
-                        <li>• SEO Backlink Outreach</li>
-                        <li>• Scaled Media Plan</li>
+                <!-- Step 4 -->
+                <div class="p-10 step-card rounded-3xl group">
+                    <span class="text-gradient font-black text-[10px] uppercase tracking-[0.3em] mb-6 block">PHASE 04</span>
+                    <h4 class="text-white text-2xl font-bold mb-4">Publishing</h4>
+                    <p class="text-dim text-sm leading-relaxed mb-6">Title, description, tags, and video are pushed directly to your channel.</p>
+                    <ul class="text-[12px] text-white/70 space-y-3 font-medium">
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> SEO Title & Desc</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Auto-Tagging</li>
+                        <li class="flex items-center gap-2"><svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Scheduled Uploads</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Technical & Ad Performance -->
-        <section id="performance">
+        <!-- Stats / Performance Section -->
+        <section id="stats">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div>
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 serif italic">03. Technical Core</h2>
-                    <p class="text-dim text-lg mb-12 leading-relaxed">I build conversion engines, not just social pages. My strategy ensures your website and socials work in perfect harmony to drive HNW (High-Net-Worth) leads.</p>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 text-white">03. Impact & Efficiency</h2>
+                    <p class="text-dim text-lg mb-12 leading-relaxed">Stop wasting time editing and paying expensive freelancers. Scale your faceless channels infinitely with local AI automation.</p>
                     
                     <div class="space-y-6">
-                        <div class="p-8 bg-neutral-900/40 rounded-3xl border border-white/5 flex items-start gap-6">
-                            <div class="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex-shrink-0 flex items-center justify-center text-[#D4AF37] text-2xl">⚡</div>
+                        <div class="p-8 bg-white/5 rounded-3xl border border-white/5 flex items-start gap-6 backdrop-blur-sm">
+                            <div class="w-14 h-14 rounded-2xl bg-purple-500/20 flex-shrink-0 flex items-center justify-center text-purple-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
                             <div>
-                                <h5 class="text-xl font-bold text-white mb-2">Performance SEO</h5>
-                                <p class="text-sm text-dim leading-relaxed">Optimizing for "Luxury Home Builder" and "ADU Specialist" keywords to capture intent at the search level.</p>
+                                <h5 class="text-xl font-bold text-white mb-2">Save 10+ Hours/Week</h5>
+                                <p class="text-sm text-dim leading-relaxed">What used to take an entire day of scripting, sourcing b-roll, and editing now happens in minutes in the background.</p>
                             </div>
                         </div>
-                        <div class="p-8 bg-neutral-900/40 rounded-3xl border border-white/5 flex items-start gap-6">
-                            <div class="w-14 h-14 rounded-2xl bg-[#D4AF37]/10 flex-shrink-0 flex items-center justify-center text-[#D4AF37] text-2xl">📱</div>
+                        <div class="p-8 bg-white/5 rounded-3xl border border-white/5 flex items-start gap-6 backdrop-blur-sm">
+                            <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 flex-shrink-0 flex items-center justify-center text-cyan-400">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
                             <div>
-                                <h5 class="text-xl font-bold text-white mb-2">Content Frequency</h5>
-                                <p class="text-sm text-dim leading-relaxed">3 Posts, 2 Reels, and Daily Stories per company per week. A total dominance strategy for the feed.</p>
+                                <h5 class="text-xl font-bold text-white mb-2">100% Free & Open Source</h5>
+                                <p class="text-sm text-dim leading-relaxed">No monthly subscriptions for expensive SaaS tools. You only pay for API usage (pennies per video).</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-neutral-900/20 border border-white/5 p-12 rounded-[4rem]">
-                    <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-[#D4AF37] text-center mb-12">Recommended Ad Allocation</h4>
-                    <div class="chart-container">
-                        <canvas id="growthChart"></canvas>
+                <div class="bg-white/5 border border-white/5 p-12 rounded-[3rem] backdrop-blur-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 blur-[80px] rounded-full"></div>
+                    <h4 class="text-[11px] font-black uppercase tracking-[0.2em] text-white text-center mb-8 z-10 relative">Content Creation Time Comparison</h4>
+                    <div class="chart-container z-10 relative">
+                        <canvas id="efficiencyChart"></canvas>
                     </div>
-                    <p class="mt-12 text-center text-[10px] text-dim uppercase tracking-[0.2em]">Growth vs. Conversion Balance</p>
+                    <p class="mt-8 text-center text-xs text-dim z-10 relative">Minutes spent per video (Manual vs AI Content Studio)</p>
                 </div>
             </div>
         </section>
 
         <!-- Final Pitch -->
-        <section class="text-center py-20 px-8 relative overflow-hidden">
+        <section class="text-center py-24 px-8 relative overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent">
              <div class="relative z-10">
-                <h2 class="text-5xl md:text-8xl font-black mb-8 serif italic leading-tight">Zero Friction. <br>Just Results.</h2>
-                <p class="max-w-3xl mx-auto text-xl md:text-2xl font-light leading-relaxed mb-16 text-white/80 italic">
-                    "I don’t offer services; I offer a competitive advantage. For Builditpdx and Bay Area Developers, I will bridge the gap between craftsmanship and market leadership."
+                <h2 class="text-5xl md:text-7xl font-black mb-8 leading-tight">Clone. Run. <span class="text-gradient">Grow.</span></h2>
+                <p class="max-w-2xl mx-auto text-xl md:text-2xl font-light leading-relaxed mb-12 text-dim">
+                    Join the open-source movement for automated content creation. Take control of your YouTube channels today.
                 </p>
-                <div class="flex flex-col items-center gap-8">
-                    <a href="https://upwork.com/freelancers/naqashafzalzakria" target="_blank" class="btn-hire px-16 py-6 rounded-full text-lg uppercase tracking-widest shadow-2xl">Hire Me Now</a>
-                    <p class="text-dim text-[10px] font-black uppercase tracking-[0.5em]">Starting 30-Day Transformation Immediately</p>
+                <div class="flex flex-col items-center gap-6">
+                    <a href="https://github.com/naqashafzal/AI-Content-Studio" target="_blank" class="btn-primary px-12 py-5 rounded-full text-sm font-bold uppercase tracking-wider shadow-2xl flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                        View Source Code
+                    </a>
+                    <p class="text-dim text-xs font-bold uppercase tracking-[0.2em]">Star the repository to support development</p>
                 </div>
              </div>
+             <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-cyan-600/20 blur-[120px] -z-10"></div>
         </section>
 
     </main>
 
-    <footer class="py-24 px-6 border-t border-white/5 text-center">
-        <div class="flex items-center justify-center gap-3 mb-10">
-            <div class="w-8 h-8 bg-[#D4AF37] flex items-center justify-center rounded">
-                <span class="text-black font-black text-xs">NA</span>
-            </div>
-            <span class="text-[10px] font-black tracking-[0.4em] uppercase">Growth Partner</span>
+    <footer class="py-12 px-6 border-t border-white/5 text-center bg-[#030305]">
+        <div class="flex items-center justify-center gap-3 mb-6">
+            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
+            <span class="text-xs font-black tracking-[0.2em] uppercase">AI Content Studio</span>
         </div>
-        <p class="text-[10px] font-bold text-dim tracking-[0.5em] uppercase">© 2024 Naqash Afzal | Exclusive Proposal for Builditpdx & The Bay Area Developers</p>
+        <p class="text-xs font-bold text-dim tracking-widest uppercase mb-4">Developed by Naqash Afzal</p>
+        <div class="flex justify-center gap-6">
+            <a href="https://github.com/naqashafzal/AI-Content-Studio" class="text-dim hover:text-white transition">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+            </a>
+        </div>
     </footer>
 
     <script>
         const views = {
-            pdx: {
-                logo: "https://builditpdx.com/wp-content/themes/pconst/images/logo.png",
-                audience: "Portland homeowners seeking ADU conversions, high-end kitchen remodels, and reliable local craftsmanship. Focus on trust and PNW aesthetics.",
-                branding: "The 'Neighborhood Craftsman.' Authoritative, expert, but accessible. Strong focus on Multnomah and Clackamas county reach.",
-                website: "Priority: Mobile optimization and localized service landing pages for ADUs to lower lead-acquisition costs.",
-                additional: "Localized NextDoor verification and aggressive Facebook Community engagement in target zip codes."
+            script: {
+                icon: '✍️',
+                title: 'AI Script Generation',
+                description: 'Leverage top-tier LLMs to write highly engaging, viral-optimized scripts. Just provide a prompt or keyword, and the AI handles hooks, body content, and call-to-actions.',
+                feature1: 'Viral Hook Optimization',
+                detail1: 'AI is prompted to structure the first 5 seconds to maximize retention.',
+                feature2: 'Custom Tone & Length',
+                detail2: 'Generate 60-second shorts or 10-minute long-form video scripts instantly.',
+                highlight: 'Supports OpenAI, Anthropic, and Local Models via API.'
             },
-            bay: {
-                logo: "https://thebayareadevelopers.com/wp-content/uploads/2024/01/baylogo-gold.png",
-                audience: "High-Net-Worth individuals and Real Estate Investors in the SF/Oakland Peninsula. Looking for elite ground-up development and permitting speed.",
-                branding: "The 'Architectural Authority.' Professional, high-scale, and capable of navigating the complex regulatory landscape of San Francisco.",
-                website: "Priority: Case-study driven UX. Highlighting 'Ground-Up' expertise and permit acquisition success stories.",
-                additional: "LinkedIn outreach for B2B architectural partnerships and geo-fenced ads targeting high-property-value zones."
+            voice: {
+                icon: '🎙️',
+                title: 'Lifelike Voiceovers',
+                description: 'Transform generated scripts into natural-sounding speech. Integration with top TTS providers ensures your videos sound professional and engaging, not robotic.',
+                feature1: 'Multiple Voices & Accents',
+                detail1: 'Choose from a library of voices that fit your channel’s persona.',
+                feature2: 'Pacing & Emotion',
+                detail2: 'Advanced TTS handles natural pauses and emotional inflections.',
+                highlight: 'Outputs high-quality audio files ready for timeline merging.'
+            },
+            video: {
+                icon: '🎬',
+                title: 'Automated Video Assembly',
+                description: 'The tool automatically searches for relevant B-roll footage, generates stylish captions (like Hormozi style), and stitches everything together into a polished MP4 file.',
+                feature1: 'Dynamic Captions',
+                detail1: 'Auto-syncs text with audio and adds colors/animations to keywords.',
+                feature2: 'B-Roll Sourcing',
+                detail2: 'Automatically fetches copyright-free visuals matching the script context.',
+                highlight: 'FFmpeg powered rendering for fast, local video generation.'
+            },
+            upload: {
+                icon: '🚀',
+                title: 'Hands-Free Publishing',
+                description: 'Once the video is rendered, AI Content Studio uses the YouTube API to upload the file directly to your channel with SEO-optimized metadata.',
+                feature1: 'Auto Titles & Tags',
+                detail1: 'Generates click-worthy titles and relevant tags for maximum reach.',
+                feature2: 'Scheduling',
+                detail2: 'Set your videos to publish immediately or schedule them for peak times.',
+                highlight: 'Zero manual intervention required from prompt to published video.'
             }
         };
 
         function updateView(key) {
             const data = views[key];
-            const container = document.getElementById('company-focus');
+            const container = document.getElementById('feature-focus');
             
-            document.getElementById('btn-pdx').classList.toggle('active-tab', key === 'pdx');
-            document.getElementById('btn-bay').classList.toggle('active-tab', key === 'bay');
-            document.getElementById('btn-pdx').classList.toggle('text-dim', key !== 'pdx');
-            document.getElementById('btn-bay').classList.toggle('text-dim', key !== 'bay');
+            ['script', 'voice', 'video', 'upload'].forEach(tab => {
+                const btn = document.getElementById('btn-' + tab);
+                if (tab === key) {
+                    btn.classList.add('active-tab');
+                    btn.classList.remove('text-dim');
+                } else {
+                    btn.classList.remove('active-tab');
+                    btn.classList.add('text-dim');
+                }
+            });
 
             container.style.opacity = 0;
             
             setTimeout(() => {
-                container.innerHTML = `
-                    <div class="logo-box">
-                        <img src="${data.logo}" class="logo-img" alt="Logo">
-                    </div>
-                    <div class="space-y-8">
-                        <div class="glass-panel p-10 rounded-[3rem]">
-                            <h4 class="text-[11px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-6">Market Identification</h4>
-                            <p class="text-white text-xl font-light leading-relaxed">${data.audience}</p>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-neutral-900/50 p-8 rounded-3xl border border-white/5">
-                                <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-3">Website Fixes</h4>
-                                <p class="text-sm text-dim leading-relaxed">${data.website}</p>
-                            </div>
-                            <div class="bg-neutral-900/50 p-8 rounded-3xl border border-white/5">
-                                <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-3">Brand Voice</h4>
-                                <p class="text-sm text-dim leading-relaxed">${data.branding}</p>
-                            </div>
-                        </div>
-                        <div class="p-8 bg-[#D4AF37]/5 rounded-3xl border border-[#D4AF37]/20">
-                            <h4 class="text-[10px] font-black uppercase text-[#D4AF37] mb-2">Growth Strategy</h4>
-                            <p class="text-sm text-white/80">${data.additional}</p>
+                container.innerHTML = \`
+                    <div class="flex justify-center md:justify-end pr-0 md:pr-10">
+                        <div class="feature-icon-box">
+                            \${data.icon}
                         </div>
                     </div>
-                `;
+                    <div class="space-y-6">
+                        <div class="glass-panel p-8 rounded-3xl">
+                            <h4 class="text-xs font-black uppercase tracking-widest text-purple-400 mb-4">\${data.title}</h4>
+                            <p class="text-white text-lg font-light leading-relaxed">\${data.description}</p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="bg-white/5 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                <h4 class="text-xs font-black uppercase text-cyan-400 mb-2">\${data.feature1}</h4>
+                                <p class="text-sm text-dim leading-relaxed">\${data.detail1}</p>
+                            </div>
+                            <div class="bg-white/5 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                <h4 class="text-xs font-black uppercase text-cyan-400 mb-2">\${data.feature2}</h4>
+                                <p class="text-sm text-dim leading-relaxed">\${data.detail2}</p>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-2xl border border-purple-500/20">
+                            <p class="text-sm text-white/90 font-medium flex items-center gap-2">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                \${data.highlight}
+                            </p>
+                        </div>
+                    </div>
+                \`;
                 container.style.opacity = 1;
             }, 300);
         }
 
         function initChart() {
-            const ctx = document.getElementById('growthChart').getContext('2d');
+            const ctx = document.getElementById('efficiencyChart').getContext('2d');
+            
+            // Set global font settings
+            Chart.defaults.color = '#9CA3AF';
+            Chart.defaults.font.family = 'Outfit';
+
             new Chart(ctx, {
-                type: 'doughnut',
+                type: 'bar',
                 data: {
-                    labels: ['Social Growth (1K Likes Focus)', 'Conversion (Google LSA/PPC)', 'Authority Content Production'],
-                    datasets: [{
-                        data: [40, 40, 20],
-                        backgroundColor: ['#D4AF37', '#222', '#000'],
-                        borderColor: 'rgba(255,255,255,0.1)',
-                        borderWidth: 2,
-                        hoverOffset: 15
-                    }]
+                    labels: ['Scripting', 'Voiceover', 'Editing', 'Uploading'],
+                    datasets: [
+                        {
+                            label: 'Manual Process',
+                            data: [60, 30, 120, 15],
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            borderColor: 'rgba(255, 255, 255, 0.2)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'AI Content Studio',
+                            data: [1, 2, 5, 1], // Very small amounts of time
+                            backgroundColor: 'rgba(139, 92, 246, 0.8)',
+                            borderColor: '#8B5CF6',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    cutout: '85%',
                     plugins: {
                         legend: {
-                            position: 'bottom',
+                            position: 'top',
                             labels: { 
-                                color: '#737373', 
-                                padding: 25, 
-                                font: { family: 'Outfit', size: 10, weight: 'bold' },
-                                usePointStyle: true
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Minutes'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
                             }
                         }
                     }
@@ -365,7 +469,7 @@
         }
 
         window.onload = () => {
-            updateView('pdx');
+            updateView('script');
             initChart();
         };
     </script>
