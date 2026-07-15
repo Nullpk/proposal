@@ -24,13 +24,19 @@
             color: var(--text-main);
             scroll-behavior: smooth;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 50%);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-position: 0 0, center center, center center;
         }
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 16, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.05) inset;
         }
 
         .chart-container {
@@ -52,24 +58,32 @@
             border: 1px solid rgba(139, 92, 246, 0.2);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 3rem;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
         }
 
         .feature-icon-box:hover {
             border-color: var(--accent-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
         }
 
         .active-tab {
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
             color: #fff;
             font-weight: 700;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 15px rgba(139, 92, 246, 0.4); }
+            50% { text-shadow: 0 0 25px rgba(6, 182, 212, 0.8); }
         }
 
         .text-gradient {
             background: linear-gradient(90deg, #8B5CF6 0%, #06B6D4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: pulseGlow 3s infinite alternate;
         }
 
         .btn-primary {
@@ -79,11 +93,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
             border: none;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
         }
 
         .btn-secondary {
@@ -92,11 +108,13 @@
             color: #fff;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255,255,255,0.02);
         }
 
         .btn-secondary:hover {
             background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
         }
 
         @keyframes fadeIn {
@@ -107,14 +125,30 @@
         .fade-in { animation: fadeIn 0.6s ease forwards; }
         
         .step-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(10, 10, 16, 0.7);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+        .step-card:hover::before {
+            left: 150%;
         }
         .step-card:hover {
-            border-color: rgba(6, 182, 212, 0.4);
+            border-color: rgba(6, 182, 212, 0.6);
             transform: translateY(-5px);
-            background: rgba(255,255,255,0.03);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.3), 0 0 15px rgba(139, 92, 246, 0.2) inset;
+            background: rgba(10, 10, 16, 0.9);
         }
     </style>
 </head>
@@ -285,8 +319,7 @@
                 <div class="md:w-1/3 flex justify-center z-10">
                     <div class="w-48 h-48 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 p-1 shadow-2xl shadow-purple-500/20">
                         <div class="w-full h-full rounded-full bg-[#030305] flex items-center justify-center overflow-hidden">
-                            <!-- Placeholder avatar, can be replaced with an image later -->
-                            <svg class="w-24 h-24 text-dim" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <img src="https://scontent.flhe3-1.fna.fbcdn.net/v/t39.30808-6/695703695_26616635091355115_7323080000212633608_n.jpg?stp=dst-jpg_tt6&cstp=mx1576x1568&ctp=s1576x1568&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE1JTYiDb39Ob6dPTAwhfRCBgKZCvnEpp8GApkK-cSmnwHGuY9LhrNLvS29rZcYWxxtjmsVuaEGa4I6NrM4cFRV&_nc_ohc=Hzafv_nJJmkQ7kNvwHWcEOO&_nc_oc=Adp0fdpqReHKeEN1fDfevScVqgwp1iTeZu8Ld5cD5Oo5a4Wlc0UsIbXLF59nJBX8qR0&_nc_zt=23&_nc_ht=scontent.flhe3-1.fna&_nc_gid=yLSx8gswYjsFds15NugdKw&_nc_ss=7b2a8&oh=00_AQAiymrnXbffw7cLT6y61H3hW4hESrA3E7qolkeQY5wDBw&oe=6A5CFF9A" alt="Naqash Afzal" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
